@@ -1,29 +1,71 @@
 <template>
-  <header class="p-3 bg-dark text-white sticky-top">
-    <div class="my-navbar container">
-      <div class="my-navbar-left">
-        <a class="shop-name" href="/">spicyPerfume</a>
-        <div class="dropdown">
-          <button class="dropdown-btn">Brands</button>
-          <div class="dropdown-content">
-            <div v-for="brand in brands">
-              <a :href="brand.href">{{ brand.title }}</a>
-            </div>
+  <nav
+    class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top"
+    aria-label="Fourth navbar example"
+  >
+    <div class="container">
+      <a class="navbar-brand" href="/">spicyPerfume</a>
+      <button
+        class="navbar-toggler collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarsExample04"
+        aria-controls="navbarsExample04"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse collapse" id="navbarsExample04" style="">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="dropdown04"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              >Brands</a
+            >
+            <ul
+              class="dropdown-menu"
+              aria-labelledby="dropdown04"
+            >
+              <div v-for="brand in brands">
+                <li>
+                  <a 
+                    class="dropdown-item" 
+                    v-bind:href="brand.href"
+                  >{{ brand.title }}
+                  </a>
+                </li>
+              </div>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/for_men">For Men</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/for_her">For Her</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/discounts">Discounts</a>
+          </li>
+        </ul>
+        <SearchForm/>
+        <div>
+          <div v-if="true">
+            <button type="button" class="btn btn-outline-light me-2">Login</button>
+            <button type="button" class="btn btn-warning">Sign-up</button>
+          </div>
+          <div v-else>
+            <button type="button" class="btn btn-outline-light me-2">Profile</button>
           </div>
         </div>
-        <div class="my-navbar__buttons">
-          <a class="my-navbar__button" href="/for_men">For Men</a>
-          <a class="my-navbar__button" href="/for_her">For Her</a>
-          <a class="my-navbar__button" href="/discounts">Discount</a>
-        </div>
-      </div>
-      <div class="my-navbar-right">
-        <SearchForm class="me-2" />
-        <button type="button" class="btn btn-outline-light me-2">Login</button>
-        <button type="button" class="btn btn-warning">Sign-up</button>
       </div>
     </div>
-  </header>
+  </nav>
 </template>
 
 <script>
@@ -47,84 +89,4 @@ export default {
 </script>
 
 <style scoped>
-@media (max-width: 992px) {
-  .main {
-    max-width: 325px;
-  }
-}
-
-/* Dropdown Button */
-.dropdown-btn {
-  background-color: rgba(28, 28, 28, 0);
-  border: none;
-  text-decoration: none;
-  color: rgb(168, 168, 168);
-  font-size: 18px;
-}
-
-.dropdown-btn:hover {
-  color: white;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.my-navbar__button {
-  text-decoration: none;
-  color: rgb(168, 168, 168);
-  font-size: 18px;
-  padding: 10px;
-}
-.my-navbar__button:hover {
-  color: rgb(255, 255, 255);
-}
-.shop-name {
-  text-decoration: none;
-  color: white;
-  font-size: 25px;
-  padding-right: 15px;
-}
-.my-navbar {
-  display: flex;
-  justify-content: space-between;
-}
-.my-navbar-left {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.my-navbar-right {
-  display: flex;
-  flex-direction: row;
-}
 </style>

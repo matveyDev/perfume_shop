@@ -32,29 +32,32 @@
     </button>
   </div>
 
-  <div class="container middle-body">
-    <span class="text-header pb-2">Best Fragrance</span>
-    <div class="main__cards">
-      <div v-for="product in products">
-        <ProductCard :product="product"/>
+    <div class="container">
+      <div class="album">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <div v-for="product in products" class="col">
+            <ProductCard :product="product"/>
+          </div>
+        </div>
       </div>
-      <div class="border-body">
-        <hr class="featurette-divider">
-        <InlineProductCardRight :inlineBlock="inlineBlock_1"/>
-        <hr class="featurette-divider">
-        <InlineProductCardLeft/>
-        <hr class="featurette-divider">
-        <InlineProductCardRight :inlineBlock="inlineBlock_1"/>
-        <hr class="featurette-divider">
+      <div class="body-bottom">
+        <hr class="hr">
+        <InlineProductCardRight :inlineBlock='inlineBlock_1'/>
+        <hr class="hr">
+        <InlineProductCardLeft :inlineBlock='inlineBlock_2'/>
+        <hr class="hr">
+        <InlineProductCardRight :inlineBlock='inlineBlock_1'/>
+        <hr class="hr">
       </div>
     </div>
-  </div>
+
+
 </template>
 
 <script>
-import ProductCard from "../UI/ProductCard";
 import InlineProductCardRight from "../UI/InlineProductCardRight";
 import InlineProductCardLeft from "../UI/InlineProductCardLeft";
+import ProductCard from '../UI/ProductCard.vue';
 
 export default {
   components: {
@@ -74,9 +77,15 @@ export default {
         { id: 6, name: "Tom Ford Sucker" },
         { id: 7, name: "Tom Ford Sucker" },
         { id: 8, name: "Tom Ford Sucker" },
+        { id: 9, name: "Tom Ford Sucker" },
       ],
       inlineBlock_1: {
-        imageName: "mfks.jpg",
+        imageName: require("../source/mfks.jpg"),
+        title: "Title",
+        description: "Any description",
+      },
+      inlineBlock_2: {
+        imageName: require("../source/tom_fords.jpg"),
         title: "Title",
         description: "Any description",
       },
@@ -88,25 +97,10 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
-.featurette-divider {
-  margin: 75px 0;
+.hr {
+  margin: 75px 0px;
 }
-.middle-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.main__cards {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-.text-header {
-  margin-top: 25px;
-  color: #000;
-  font-size: 35px;
-  font-family: "Roboto", sans-serif;
+.hr:last-child {
+  margin-bottom: 25px;
 }
 </style>

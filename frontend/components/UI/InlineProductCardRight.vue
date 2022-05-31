@@ -1,19 +1,21 @@
 <template>
-  <div class="inline-product row featurette">
-    <div class="col-md-7">
-      <h2 class="featurette-heading">
-        {{ inlineBlock.title }}
+  <div class="row featurette" data-v-20d0eabf="">
+    <div class="col-md-7" data-v-20d0eabf="">
+      <h2 class="featurette-heading fw-normal lh-1" data-v-20d0eabf="">
+        First featurette heading.
+        <span class="text-muted" data-v-20d0eabf="">It’ll blow your mind.</span>
       </h2>
-      <p class="lead">
-        {{ inlineBlock.description }}
+      <p class="lead" data-v-20d0eabf="">
+        Some great placeholder content for the first featurette here. Imagine
+        some exciting prose here.
       </p>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-5" data-v-20d0eabf="">
       <img
         class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-        width="535"
+        width="500"
         height="500"
-        :src="'../source/' + inlineBlock.imageName"
+        :src="inlineBlock.imageName"
       />
     </div>
   </div>
@@ -22,8 +24,8 @@
 <script>
 export default {
   props: {
-    inlineBlock: Object
-  }
+    inlineBlock: Object,
+  },
 };
 </script>
 

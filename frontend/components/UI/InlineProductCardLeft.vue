@@ -13,9 +13,9 @@
     <div class="col-md-5 order-md-1">
       <img
         class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-        src="../source/etsy_logo.png"
-        width="535"
+        width="500"
         height="500"
+        :src='inlineBlock.imageName'
       />
     </div>
   </div>
