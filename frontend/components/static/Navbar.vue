@@ -56,8 +56,8 @@
         <SearchForm/>
         <div>
           <div v-if="true">
-            <button type="button" class="btn btn-outline-light me-2">Login</button>
-            <button type="button" class="btn btn-warning">Sign-up</button>
+            <a href="/login" class="btn btn-outline-light me-2">Login</a>
+            <a href="/signup" class="btn btn-warning">Sign-up</a>
           </div>
           <div v-else>
             <button type="button" class="btn btn-outline-light me-2">Profile</button>

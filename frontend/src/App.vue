@@ -26,7 +26,7 @@ ul {
   margin-left: 0;
   padding-left: 0;
 }
-body {
+#app {
   background: rgb(238, 238, 238);
 }
 </style>

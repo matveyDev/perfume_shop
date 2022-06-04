@@ -1,16 +1,13 @@
 <template>
   <div class="main">
-    <div class="card text-white">
-      <img src="../source/tom_fords.jpg" class="card-img" alt="..." />
+    <a :href="product.url">
+      <div class="card text-white image">
+      <img src="../source/tom_fords.jpg" class="card-img"/>
       <div class="card-img-overlay">
         <h5 class="card-title">{{ product.name }}</h5>
-        <p class="card-text">
-          This is a wider card with supporting text below as a natural lead-in
-          to additional content. This content is a little bit longer.
-        </p>
-        <p class="card-text">Last updated 3 mins ago</p>
       </div>
     </div>
+    </a>
   </div>
 </template>
 
@@ -23,14 +20,18 @@ export default {
 </script>
 
 <style scoped>
-.main {
-  max-width: 320px;
-  margin: 5px 0;
+.image {
+  overflow: hidden;
+  transition: 0.1s;
+  display: block;
 }
-@media (max-width: 1400px) {
-  .main {
-    max-width: 500px;
-  }
+.image:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+.main {
+  max-width: 500px;
+  margin: 5px 0;
 }
 @media (max-width: 1200px) {
   .main {

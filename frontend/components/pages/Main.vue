@@ -33,6 +33,7 @@
   </div>
 
     <div class="container">
+      <h1 class="pt-5 pb-3 body-top-text text-center">Best fragrance</h1>
       <div class="album">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
           <div v-for="product in products" class="col">
@@ -50,14 +51,12 @@
         <hr class="hr">
       </div>
     </div>
-
-
 </template>
 
 <script>
 import InlineProductCardRight from "../UI/InlineProductCardRight";
 import InlineProductCardLeft from "../UI/InlineProductCardLeft";
-import ProductCard from '../UI/ProductCard.vue';
+import ProductCard from '../UI/ProductCard';
 
 export default {
   components: {
@@ -69,15 +68,12 @@ export default {
     return {
       // replace on real data
       products: [
-        { id: 1, name: "Tom Ford Biiter Peach" },
-        { id: 2, name: "Tom Ford Oud Wood" },
-        { id: 3, name: "Tom Ford Tobacco Oud" },
-        { id: 4, name: "Tom Ford Black Orchid" },
-        { id: 5, name: "Tom Ford Sucker" },
-        { id: 6, name: "Tom Ford Sucker" },
-        { id: 7, name: "Tom Ford Sucker" },
-        { id: 8, name: "Tom Ford Sucker" },
-        { id: 9, name: "Tom Ford Sucker" },
+        { id: 1, name: "Tom Ford Biiter Peach", url: '/Tom-Ford-Biiter-Peach' },
+        { id: 2, name: "Tom Ford Oud Wood", url: '/Tom-Ford-Biiter-Peach' },
+        { id: 3, name: "Tom Ford Tobacco Oud", url: '/Tom-Ford-Biiter-Peach' },
+        { id: 4, name: "Tom Ford Black Orchid", url: '/Tom-Ford-Biiter-Peach' },
+        { id: 5, name: "Tom Ford Wood", url: '/Tom-Ford-Biiter-Peach' },
+        { id: 6, name: "Tom Ford Black", url: '/Tom-Ford-Biiter-Peach' },
       ],
       inlineBlock_1: {
         imageName: require("../source/mfks.jpg"),
@@ -97,6 +93,9 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
+.body-top-text {
+  font-family: 'Roboto';
+}
 .hr {
   margin: 75px 0px;
 }
