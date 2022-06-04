@@ -4,13 +4,6 @@
 			<div class="footer__icons">
 				<a
 					class="icon"
-					href="https://www.etsy.com/shop/spicyPerfume"
-					target="blank"
-				>
-					<img src="../source/etsy_logo.png" width="75" alt="Etsy" />
-				</a>
-				<a
-					class="icon"
 					href="https://www.instagram.com/wonder_de_parfum/"
 					target="blank"
 				>
