@@ -1,6 +1,6 @@
 <template>
-  <div>
-    Login
+  <div class="login">
+
   </div>
 </template>
 
@@ -11,4 +11,7 @@ export default {
 </script>
 
 <style scoped>
+.login {
+  
+}
 </style>

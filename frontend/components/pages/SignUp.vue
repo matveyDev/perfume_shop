@@ -1,7 +1,5 @@
 <template>
-  <div>
-    SginUp
-  </div>
+
 </template>
 
 <script>
