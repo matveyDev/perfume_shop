@@ -19,6 +19,19 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+* {
+  font-family: 'Roboto';
+}
+html, body {
+  height: 100%;
+}
+#app {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 li {
   list-style-type: none;
 }
