@@ -110,7 +110,7 @@ export default {
 }
 .images {
   display: flex;
-  margin-top: 7px;
+  margin-top: 10px;
 }
 .images > img {
   height: 30px;
