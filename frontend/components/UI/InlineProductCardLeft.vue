@@ -12,7 +12,7 @@
     </div>
     <div class="col-md-5 order-md-1">
       <img
-        class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+        class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto image"
         width="500"
         height="500"
         :src='inlineBlock.imageName'
@@ -30,4 +30,14 @@ export default {
 </script>
 
 <style scoped>
+.image {
+  overflow: hidden;
+  transition: 0.1s;
+  display: block;
+  border-radius: 10px;
+}
+.image:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
 </style>
