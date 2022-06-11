@@ -2,11 +2,12 @@
   <div class="login">
     <img class="off-logo" src="../source/official_logo.jpg" alt="spicyPerfume">
     <div class="signin-form">
-      <form action="POST" class="block-signin">
+      <form class="block-signin">
         <h3>Please sign in</h3>
         <div class="inputs">
           <div class="form-floating">
             <input
+              v-model="email"
               type="email"
               class="form-control"
               placeholder="name@example.com"
@@ -15,6 +16,7 @@
           </div>
           <div class="form-floating">
             <input
+            v-model="password"
               type="password"
               class="form-control"
               placeholder="Password"
@@ -25,6 +27,7 @@
         <button
           class="w-100 btn btn-lg btn-primary mt-4 signin-button"
           type="submit"
+          @click="signIn"
         >
           Sign in
         </button>
@@ -42,7 +45,22 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      email: '',
+      password: ''
+    }
+  },
+  methods: {
+    signIn() {
+      // create a validator for email and password
+      // !!! create hashed password !!!
+      // post request to login here
+      // sned request in JSON format
+    }
+  }
+};
 </script>
 
 <style scoped>
