@@ -20,3 +20,7 @@ class User(BaseModel):
                 'cart_items': [1, 1, 2]
             }
         }
+
+
+class UserInDb(User):
+    hashed_password: str
