@@ -1,15 +1,11 @@
-from sqlalchemy import select, create_engine
-from sqlalchemy.orm import Session
+from sqlalchemy import select
 
-from .schemas import Perfume as PerfumeSchema
+from query_base import BaseQueries
 from database.base import Perfume
-from database.local_db import SQLALCHEMY_DATABASE_URL
+from .schemas import Perfume as PerfumeSchema
 
 
-class PerfumeQueries:
-    def __init__(self):
-        engine = create_engine(SQLALCHEMY_DATABASE_URL)
-        self.session = Session(engine)
+class PerfumeQueries(BaseQueries):
 
     def get_perfumes_by_brand(self, brand: str) -> list[PerfumeSchema]:
         perfumes_query = select(Perfume).where(
