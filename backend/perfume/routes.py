@@ -1,5 +1,4 @@
 from fastapi import APIRouter, HTTPException, Query, Path
-from typing import Optional
 
 from .queries import PerfumeQueries
 from .schemas import Perfume
@@ -18,11 +17,12 @@ perfume_queries = PerfumeQueries()
 @router.get('/{brand}', response_model=list[Perfume])
 async def get_perfume_by_brand(
     brand: str = Path(..., title='The perfume\'s brand'),
-    limit: Optional[int] = Query(None, title='Limit of perfumes'),
+    limit: int | None = Query(None, title='Limit of perfumes'),
 ):
     brand = brand.replace('_', ' ').replace('-', ' ').title()
     perfumes = perfume_queries.get_perfumes_by_brand(brand)
 
+    # Nothing to show
     if len(perfumes) == 0:
         return HTTPException(404)
 
