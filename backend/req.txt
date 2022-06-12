@@ -23,6 +23,7 @@ sniffio==1.2.0
 SQLAlchemy==1.4.37
 SQLAlchemy-ImageAttach==1.1.0
 starlette==0.19.1
+tabulate==0.8.9
 toml==0.10.2
 tomli==2.0.1
 tomlkit==0.11.0
