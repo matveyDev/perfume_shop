@@ -1,3 +1,4 @@
+from typing import Union
 from fastapi import APIRouter, HTTPException, Query, Path
 
 from .queries import PerfumeQueries
@@ -17,7 +18,7 @@ perfume_queries = PerfumeQueries()
 @router.get('/{brand}', response_model=list[Perfume])
 async def get_perfume_by_brand(
     brand: str = Path(..., title='The perfume\'s brand'),
-    limit: int | None = Query(None, title='Limit of perfumes'),
+    limit: Union[int, None] = Query(None, title='Limit of perfumes'),
 ):
     brand = brand.replace('_', ' ').replace('-', ' ').title()
     perfumes = perfume_queries.get_perfumes_by_brand(brand)
