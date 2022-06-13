@@ -1,7 +1,7 @@
 from typing import Generic, Optional, Type, TypeVar
 
 from fastapi.encoders import jsonable_encoder
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, update
 from sqlalchemy.orm import Session
 
 from database.db import Base
@@ -35,14 +35,31 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
 
         self.session.add(db_object)
         self.session.commit()
-        self.session.refresh()
+        self.session.refresh(db_object)
         return db_object
 
-    def update(self):
-        pass
+    def update(self, jsonalbe_data: ModelType, update_data: UpdateSchemaType) -> ModelType:
+        db_object = jsonable_encoder(jsonalbe_data)
+        update_data = update_data.dict(skip_defaults=True)
 
-    def delete(self):
-        pass
+        for field in update_data:
+            setattr(db_object, field, update_data[field])
+
+        self.session.execute(
+            update(self.Model).
+            where(self.Model.id == db_object.id).
+            values(**db_object)
+        )
+        self.session.commit()
+        self.session.refresh(db_object)
+        return db_object
+
+    def delete(self, id: int) -> ModelType:
+        delete_object = self.session.query(self.Model).get(id)
+
+        self.session.delete(delete_object)
+        self.session.commit()
+        return delete_object
 
     def __del__(self) -> None:
         self.session.close()
