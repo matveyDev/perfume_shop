@@ -1,17 +1,22 @@
 from sqlalchemy import select
 
-from query_base import BaseQueries
+from crud_base import CRUDBase
 from database.base import Perfume
 from .schemas import Perfume as PerfumeSchema
 
 
-class PerfumeQueries(BaseQueries):
+class CRUDPerfume(CRUDBase):
+    def __init__(self):
+        super().__init__(Perfume)
 
-    def get_perfumes_by_brand(self, brand: str) -> list[PerfumeSchema]:
-        perfumes_query = select(Perfume).where(
+    def get_perfumes_by_brand(self, brand: str, limit: int = None) -> list[PerfumeSchema]:
+        query = select(Perfume).where(
             Perfume.brand==brand
         )
-        perfumes = self.session.scalars(perfumes_query)
+        if limit is not None:
+            query = query.limit(limit).all()
+
+        perfumes = self.session.scalars(query)
         perfumes_list = [perfume.__dict__ for perfume in perfumes]
 
         return perfumes_list
