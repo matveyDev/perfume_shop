@@ -5,7 +5,7 @@ from database.base import Cart, User, Order,\
     Perfume, PerfumeInCart, PerfumeInOrder
 
 
-class PerfumeBaseTest(BaseTest):
+class BaseTestPerfume(BaseTest):
 
     def create_perfumes(self):
         self.perfume_1 = Perfume(
@@ -42,7 +42,7 @@ class PerfumeBaseTest(BaseTest):
         self.session.commit()
 
 
-class TestPerfumeInOrderModel(PerfumeBaseTest):
+class TestPerfumeInOrderModel(BaseTestPerfume):
     def setup(self):
         self.models = [User, Cart, PerfumeInOrder, Perfume]
         super().setup()
@@ -125,7 +125,7 @@ class TestPerfumeInOrderModel(PerfumeBaseTest):
         super().teardown(self.models)
 
 
-class TestPerfumeInCartModel(PerfumeBaseTest):
+class TestPerfumeInCartModel(BaseTestPerfume):
     def setup(self):
         self.models = [User, Cart, PerfumeInCart, Perfume]
         super().setup()
@@ -207,7 +207,7 @@ class TestPerfumeInCartModel(PerfumeBaseTest):
         super().teardown(self.models)
 
 
-class aTestPerfumeModel(PerfumeBaseTest):
+class TestPerfumeModel(BaseTestPerfume):
     def setup(self):
         super().setup()
 
