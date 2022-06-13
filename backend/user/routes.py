@@ -1,8 +1,6 @@
-from fastapi import APIRouter, HTTPException, Query, Path
+from fastapi import APIRouter
 
-
-router = APIRouter()
-
-
-# @router.post('/login')
-# async def sign_in():
+router = APIRouter(
+    prefix='/users',
+    tags=['users']
+)
