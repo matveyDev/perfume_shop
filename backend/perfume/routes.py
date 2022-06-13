@@ -1,33 +1,27 @@
-from typing import Union
+from typing import Union, List
 from fastapi import APIRouter, HTTPException, Query, Path
 
-from .queries import PerfumeQueries
-from .schemas import Perfume
+from .crud import CRUDPerfume
+from .schemas import Perfume as PerfumeSchema
 
 router = APIRouter(
     prefix='/perfume',
     tags=['perfume']
 )
 
-perfume_queries = PerfumeQueries()
-
-# @router.get('/brand')
-# async def get_brands():
+CRUD = CRUDPerfume()
 
 
-@router.get('/{brand}', response_model=list[Perfume])
+@router.get('/{brand}', response_model=List[PerfumeSchema])
 async def get_perfume_by_brand(
     brand: str = Path(..., title='The perfume\'s brand'),
     limit: Union[int, None] = Query(None, title='Limit of perfumes'),
 ):
     brand = brand.replace('_', ' ').replace('-', ' ').title()
-    perfumes = perfume_queries.get_perfumes_by_brand(brand)
+    perfumes = CRUD.get_perfumes_by_brand(brand, limit)
 
     # Nothing to show
     if len(perfumes) == 0:
         return HTTPException(404)
-
-    if (limit is not None) and len(perfumes) > limit:
-        perfumes = perfumes[0:limit]
 
     return perfumes
