@@ -1,4 +1,4 @@
-from typing import Generic, Optional, Type, TypeVar
+from typing import Generic, Optional, TypeVar
 
 from fastapi.encoders import jsonable_encoder
 from sqlalchemy import create_engine, update
@@ -20,7 +20,7 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         model: Model from models.py
     """
 
-    def __init__(self, Model: Type(ModelType)) -> None:
+    def __init__(self, Model: ModelType) -> None:
         self.Model = Model
         self.session = Session(
             create_engine(SQLALCHEMY_DATABASE_URL)
