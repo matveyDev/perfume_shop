@@ -24,3 +24,9 @@ async def get_perfume_by_brand(
         return HTTPException(404)
 
     return perfumes
+
+
+@router.post('/add-perfume', status_code=201, response_model=PerfumeSchema)
+async def add_perfume(perfume: PerfumeSchema):
+    CRUD.add_perfume(perfume)
+    return perfume
