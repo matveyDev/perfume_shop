@@ -1,3 +1,5 @@
+from sqlalchemy import insert
+
 from crud_base import CRUDBase
 from database.base import Perfume
 from .schemas import Perfume as PerfumeSchema
@@ -19,3 +21,7 @@ class CRUDPerfume(CRUDBase):
         perfumes_list = [perfume.__dict__ for perfume in perfumes]
 
         return perfumes_list
+
+    # Create
+    def add_perfume(self, perfume: PerfumeSchema) -> None:
+        self.create(perfume)
