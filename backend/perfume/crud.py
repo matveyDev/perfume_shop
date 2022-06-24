@@ -1,5 +1,3 @@
-from sqlalchemy import insert
-
 from crud_base import CRUDBase
 from database.base import Perfume
 from .schemas import Perfume as PerfumeSchema
