@@ -1,4 +1,4 @@
-from typing import Generic, Optional, TypeVar
+from typing import Generic, TypeVar
 
 from fastapi.encoders import jsonable_encoder
 from sqlalchemy import create_engine, update
@@ -26,8 +26,11 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
             create_engine(SQLALCHEMY_DATABASE_URL)
         )
 
-    def get(self, id: int) -> Optional[ModelType]:
-        self.session.query(self.Model).get(id)
+    def get(self, id: int) -> ModelType | None:
+        object = self.session.query(self.Model).get(id)
+        if not object:
+            return None
+        return object
 
     def create(self, jsonalbe_data: CreateSchemaType) -> ModelType:
         data = jsonable_encoder(jsonalbe_data)
